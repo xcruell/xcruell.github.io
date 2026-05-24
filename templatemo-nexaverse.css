@@ -26,14 +26,20 @@ https://templatemo.com/tm-603-nexaverse
 	--glow-cyan: rgba(255, 89, 0, 0.4);
 	--glow-magenta: rgba(132, 0, 255, 0.4);
 	--menu-card-text: rgba(255, 255, 255, 0.65);
-	--menu-card-bg-1: rgba(var(--menu-card-border-1), 0.3);
+/*	--menu-card-bg-1: rgba(var(--menu-card-border-1), 0.3);
 	--menu-card-bg-2: rgba(var(--menu-card-border-2), 0.3);
-	--menu-card-bg-3: rgba(var(--menu-card-border-3), 0.3);
+	--menu-card-bg-3: rgba(var(--menu-card-border-3), 0.3);*/
 	--menu-card-border: rgba(194, 101, 101, 0.5);
-	--menu-card-border-1: rgba(0, 240, 255, 0.5);
-	--menu-card-border-2: rgba(255, 0, 212, 0.5);
+	--menu-card-border-1: rgb(255, 98, 0);
+	--menu-card-border-2: rgba(0, 217, 255, 0.5);
 	--menu-card-border-3: rgba(180, 0, 255, 0.5);
+/*	--menu-card-border-1: rgba(0, 240, 255, 0.5);
+	--menu-card-border-2: rgba(255, 0, 212, 0.5);
+	--menu-card-border-3: rgba(180, 0, 255, 0.5);*/
 	--menu-card-border-glow: rgba(255, 255, 255, 0.5);
+	--menu-card-border-glow-1: rgba(255, 98, 0, 0.35);
+	--menu-card-border-glow-2: rgba(0, 217, 255, 0.25);
+	--menu-card-border-glow-3: rgba(180, 0, 255, 0.2);
 	--menu-card-hover: rgba(65, 65, 65, 0.1);
 	--menu-orb-1: rgba(145, 145, 145, 0.4);
 	--menu-orb-2: rgba(73, 73, 73, 0.4);
@@ -340,8 +346,8 @@ body {
 			linear-gradient(
 					135deg,
 					var(--menu-card-border-1),
-					var(--menu-card-border-2),
-					var(--menu-card-border-3)
+					var(--menu-card-border-3),
+					var(--menu-card-border-2)
 			);
 
 	-webkit-mask:
@@ -363,7 +369,7 @@ body {
 
 	background:
 			radial-gradient(circle at 15% 30%, var(--menu-card-border-1), transparent 35%),
-			radial-gradient(circle at 85% 75%, var(--menu-card-border-2), transparent 40%),
+			radial-gradient(circle at 65% 75%, var(--menu-card-border-2), transparent 40%),
 			radial-gradient(circle at 50% 10%, var(--menu-card-border-3), transparent 45%);
 	opacity: 0.55;
 	filter: blur(18px);
@@ -385,11 +391,12 @@ body {
 }*/
 .menu-item:hover {
 	transform: translateY(-10px) scale(1.02);
-	background: rgba(0, 0, 0, 0.16);
+	background: rgba(0, 0, 0, 0.15);
 	box-shadow:
-			0 20px 40px rgba(0, 240, 255, 0.2),
-			0 0 35px rgba(255, 0, 212, 0.35),
-			0 0 55px rgba(180, 0, 255, 0.15);
+			-30px -30px 55px var(--menu-card-border-glow-1),
+			30px 30px 55px var(--menu-card-border-glow-2),
+			-25px 50px 55px var(--menu-card-border-glow-3),
+			25px -50px 55px var(--menu-card-border-glow-3);
 }
 
 .menu-item.visible {
