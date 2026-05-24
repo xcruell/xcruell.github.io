@@ -14,7 +14,8 @@ https://templatemo.com/tm-603-nexaverse
 }
 
 :root {
-	--primary: #00f0ff;
+	--primary: rgb(42, 195, 208);
+	--primary-glow: rgba(255, 145, 0, 0.27);
 	--secondary: #ff00d4;
 	--accent: #9d4edd;
 	--dark-1: #0a0a12;
@@ -23,7 +24,20 @@ https://templatemo.com/tm-603-nexaverse
 	--glass-bg: rgba(255, 255, 255, 0.03);
 	--glass-border: rgba(255, 255, 255, 0.08);
 	--glow-cyan: rgba(255, 89, 0, 0.4);
-	--glow-magenta: rgba(0, 157, 255, 0.4);
+	--glow-magenta: rgba(132, 0, 255, 0.4);
+	--menu-card-text: rgba(255, 255, 255, 0.65);
+	--menu-card-bg-1: rgba(61, 61, 61, 0.4);
+	--menu-card-bg-2: rgba(115, 115, 115, 0.4);
+	--menu-card-border: rgba(194, 101, 101, 0.5);
+	--menu-card-border-glow: rgba(255, 255, 255, 0.5);
+	--menu-card-hover: rgba(65, 65, 65, 0.1);
+	--menu-orb-1: rgba(145, 145, 145, 0.4);
+	--menu-orb-2: rgba(73, 73, 73, 0.4);
+	--menu-orb-1-hover: rgba(12, 12, 12, 0.4);
+	--menu-orb-2-hover: rgba(73, 73, 73, 0.4);
+	--menu-orb-hover-glow: rgba(255, 255, 255, 0.47);
+	--menu-orb-text: rgb(238, 255, 252);
+
 }
 
 body {
@@ -297,7 +311,7 @@ body {
 }
 
 /* Glossy effect overlay */
-.menu-item::before {
+/*.menu-item::before {
 	content: '';
 	position: absolute;
 	top: 0;
@@ -305,10 +319,29 @@ body {
 	right: 0;
 	height: 50%;
 	background: linear-gradient(180deg,
-			rgba(255, 255, 255, 0.12) 0%,
-			rgba(255, 255, 255, 0.05) 40%,
+			var(--menu-card-bg-1),
+			var(--menu-card-bg-2),
 			transparent 100%);
 	border-radius: 24px 24px 0 0;
+	pointer-events: none;
+}*/
+.menu-item::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+
+	padding: 1px;
+	border-radius: 20px;
+
+	background: linear-gradient(135deg, #00f0ff, #ff00d4);
+
+	-webkit-mask:
+			linear-gradient(#fff 0 0) content-box,
+			linear-gradient(#fff 0 0);
+
+	-webkit-mask-composite: xor;
+	mask-composite: exclude;
+
 	pointer-events: none;
 }
 
@@ -319,11 +352,11 @@ body {
 
 .menu-item:hover {
 	transform: translateY(-10px) scale(1.02);
-	background: rgba(0, 240, 255, 0.08);
-	border-color: var(--primary);
+	background: var(--menu-card-hover);
+	border-color: var(--menu-card-border);
 	box-shadow:
 		0 20px 40px rgba(0, 0, 0, 0.4),
-		0 0 30px rgba(0, 200, 220, 0.2);
+		0 0 30px var(--menu-card-border-glow);
 }
 
 .menu-item.visible {
@@ -380,10 +413,10 @@ body {
 	margin-bottom: 15px;
 	position: relative;
 	background: linear-gradient(135deg,
-			rgba(0, 240, 255, 0.15) 0%,
-			rgba(255, 0, 212, 0.15) 100%);
-	border: 1px solid rgba(255, 255, 255, 0.1);
-	color: var(--primary);
+			var(--menu-orb-1) 0%,
+			var(--menu-orb-2) 100%);
+	border: 1px solid rgba(255, 255, 255, 0.21);
+	color: var(--menu-orb-text);
 	text-shadow: 0 0 20px var(--glow-cyan);
 	transition: all 0.4s ease;
 	overflow: hidden;
@@ -419,10 +452,10 @@ body {
 
 .menu-item:hover .menu-badge {
 	background: linear-gradient(135deg,
-			rgba(0, 240, 255, 0.2) 0%,
-			rgba(0, 200, 220, 0.15) 100%);
+			var(--menu-orb-1-hover) 0%,
+			var(--menu-orb-2-hover) 100%);
 	transform: scale(1.1);
-	box-shadow: 0 0 25px rgba(0, 200, 220, 0.25);
+	box-shadow: 0 0 25px var(--menu-orb-hover-glow);
 }
 
 .menu-item:hover .menu-badge::after {
@@ -441,7 +474,7 @@ body {
 	font-weight: 400;
 	letter-spacing: 3px;
 	text-transform: uppercase;
-	color: rgba(255, 255, 255, 0.7);
+	color: var(--menu-card-text);
 	transition: all 0.3s ease;
 }
 
