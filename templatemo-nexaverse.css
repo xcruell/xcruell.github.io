@@ -21,14 +21,18 @@ https://templatemo.com/tm-603-nexaverse
 	--dark-1: #0a0a12;
 	--dark-2: #12121f;
 	--dark-3: #1a1a2e;
-	--glass-bg: rgba(255, 255, 255, 0.03);
+	--glass-bg: rgba(255, 255, 255, 0);
 	--glass-border: rgba(255, 255, 255, 0.08);
 	--glow-cyan: rgba(255, 89, 0, 0.4);
 	--glow-magenta: rgba(132, 0, 255, 0.4);
 	--menu-card-text: rgba(255, 255, 255, 0.65);
-	--menu-card-bg-1: rgba(61, 61, 61, 0.4);
-	--menu-card-bg-2: rgba(115, 115, 115, 0.4);
+	--menu-card-bg-1: rgba(var(--menu-card-border-1), 0.3);
+	--menu-card-bg-2: rgba(var(--menu-card-border-2), 0.3);
+	--menu-card-bg-3: rgba(var(--menu-card-border-3), 0.3);
 	--menu-card-border: rgba(194, 101, 101, 0.5);
+	--menu-card-border-1: rgba(0, 240, 255, 0.5);
+	--menu-card-border-2: rgba(255, 0, 212, 0.5);
+	--menu-card-border-3: rgba(180, 0, 255, 0.5);
 	--menu-card-border-glow: rgba(255, 255, 255, 0.5);
 	--menu-card-hover: rgba(65, 65, 65, 0.1);
 	--menu-orb-1: rgba(145, 145, 145, 0.4);
@@ -296,7 +300,7 @@ body {
 	background: var(--glass-bg);
 	backdrop-filter: blur(20px);
 	-webkit-backdrop-filter: blur(20px);
-	border: 1px solid var(--glass-border);
+	border: 2px solid var(--glass-border);
 	border-radius: 24px;
 	display: flex;
 	flex-direction: column;
@@ -329,34 +333,63 @@ body {
 	content: "";
 	position: absolute;
 	inset: 0;
+	border-radius: inherit;
+	padding: 3px;
 
-	padding: 1px;
-	border-radius: 20px;
-
-	background: linear-gradient(135deg, #00f0ff, #ff00d4);
+	background:
+			linear-gradient(
+					135deg,
+					var(--menu-card-border-1),
+					var(--menu-card-border-2),
+					var(--menu-card-border-3)
+			);
 
 	-webkit-mask:
-			linear-gradient(#fff 0 0) content-box,
-			linear-gradient(#fff 0 0);
-
+			linear-gradient(#ffffff 0 0) content-box,
+			linear-gradient(#c2c2c2 0 0);
 	-webkit-mask-composite: xor;
 	mask-composite: exclude;
 
 	pointer-events: none;
+	z-index: 2;
 }
 
 /* Glow ring on hover - removed, using cleaner border style */
 .menu-item::after {
-	display: none;
+	content: "";
+	position: absolute;
+	inset: -40%;
+	border-radius: inherit;
+
+	background:
+			radial-gradient(circle at 15% 30%, var(--menu-card-border-1), transparent 35%),
+			radial-gradient(circle at 85% 75%, var(--menu-card-border-2), transparent 40%),
+			radial-gradient(circle at 50% 10%, var(--menu-card-border-3), transparent 45%);
+	opacity: 0.55;
+	filter: blur(18px);
+	pointer-events: none;
+	z-index: 0;
 }
 
+.menu-item > * {
+	position: relative;
+	z-index: 1;
+}
+/*.menu-item:hover {
+	transform: translateY(-10px) scale(1.02);
+	background: rgba(255, 255, 255, 0.085);
+	box-shadow:
+			0 20px 40px rgba(0, 0, 0, 0.4),
+			0 0 35px rgba(0, 240, 255, 0.33),
+			0 0 55px rgba(255, 0, 212, 0.24);
+}*/
 .menu-item:hover {
 	transform: translateY(-10px) scale(1.02);
-	background: var(--menu-card-hover);
-	border-color: var(--menu-card-border);
+	background: rgba(0, 0, 0, 0.16);
 	box-shadow:
-		0 20px 40px rgba(0, 0, 0, 0.4),
-		0 0 30px var(--menu-card-border-glow);
+			0 20px 40px rgba(0, 240, 255, 0.2),
+			0 0 35px rgba(255, 0, 212, 0.35),
+			0 0 55px rgba(180, 0, 255, 0.15);
 }
 
 .menu-item.visible {
