@@ -1,2 +1,2 @@
 # xcruell.github.io
-[xcruell on Github](github.com/xcruell)
+[xcruell on Github](http://www.github.com/xcruell)
